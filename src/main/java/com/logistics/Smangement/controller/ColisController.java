@@ -28,17 +28,17 @@ public class ColisController {
 
     private final ColisService colisService;
 
-//
-//    @GetMapping("/admin/colis")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @Operation(summary = "Admin: List all colis with filters")
-//    public ResponseEntity<Page<ColisResponse>> getAllColis(
-//            @RequestParam(required = false) ColisType type,
-//            @RequestParam(required = false) ColisStatus status,
-//            @RequestParam(required = false) String destination,
-//            Pageable pageable) {
-//        return ResponseEntity.ok(colisService.getAllColis(type, status, destination, pageable));
-//    }
+
+    @GetMapping("/admin/colis")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Admin: List all colis with filters")
+    public ResponseEntity<Page<ColisResponse>> getAllColis(
+            @RequestParam(required = false) ColisType type,
+            @RequestParam(required = false) ColisStatus status,
+            @RequestParam(required = false) String destination,
+            Pageable pageable) {
+        return ResponseEntity.ok(colisService.getAllColis(type, status, destination, pageable));
+    }
 
     @PostMapping("/admin/colis")
     @PreAuthorize("hasRole('ADMIN')")
