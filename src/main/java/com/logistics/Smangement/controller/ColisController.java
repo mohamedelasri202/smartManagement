@@ -64,39 +64,39 @@ public class ColisController {
         colisService.deleteColis(id);
         return ResponseEntity.ok("THE COLIS HAS BEEN DELETED");
     }
-//
-//    @PutMapping("/admin/colis/{id}/assign/{transporteurId}")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @Operation(summary = "Admin: Assign a colis to a specific transporteur")
-//    public ResponseEntity<ColisResponse> assignColis(
-//            @PathVariable String id,
-//            @PathVariable String transporteurId) {
-//        return ResponseEntity.ok(colisService.assignColis(id, transporteurId));
-//    }
-//
-//    @GetMapping("/transporteur/colis")
-//    @PreAuthorize("hasRole('TRANSPORTEUR')")
-//    @Operation(summary = "Transporteur: List MY assigned colis")
-//    public ResponseEntity<Page<ColisResponse>> getMyColis(
-//            @RequestParam(required = false) ColisType type,
-//            @RequestParam(required = false) ColisStatus status,
-//            @RequestParam(required = false) String destination,
-//            Authentication authentication,
-//
-//            @PageableDefault(page = 0, size = 10) Pageable pageable) {
-//
-//        String currentUserId = authentication.getName();
-//        return ResponseEntity.ok(colisService.getColisByTransporteur(currentUserId, type, status, destination, pageable));
-//    }
-//
-//    @PatchMapping("/transporteur/colis/{id}/status")
-//    @PreAuthorize("hasRole('TRANSPORTEUR')")
-//    @Operation(summary = "Transporteur: Update status of MY assigned colis")
-//    public ResponseEntity<ColisResponse> updateColisStatus(
-//            @PathVariable String id,
-//            @RequestParam ColisStatus newStatus,
-//            Authentication authentication) {
-//        String currentUserId = authentication.getName();
-//        return ResponseEntity.ok(colisService.updateStatus(id, newStatus, currentUserId));
-//    }
+
+    @PutMapping("/admin/colis/{id}/assign/{transporteurId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Admin: Assign a colis to a specific transporteur")
+    public ResponseEntity<ColisResponse> assignColis(
+            @PathVariable String id,
+            @PathVariable String transporteurId) {
+        return ResponseEntity.ok(colisService.assignColis(id, transporteurId));
+    }
+
+    @GetMapping("/transporteur/colis")
+    @PreAuthorize("hasRole('TRANSPORTEUR')")
+    @Operation(summary = "Transporteur: List MY assigned colis")
+    public ResponseEntity<Page<ColisResponse>> getMyColis(
+            @RequestParam(required = false) ColisType type,
+            @RequestParam(required = false) ColisStatus status,
+            @RequestParam(required = false) String destination,
+            Authentication authentication,
+
+            @PageableDefault(page = 0, size = 10) Pageable pageable) {
+
+        String currentUserId = authentication.getName();
+        return ResponseEntity.ok(colisService.getColisByTransporteur(currentUserId, type, status, destination, pageable));
+    }
+
+    @PatchMapping("/transporteur/colis/{id}/status")
+    @PreAuthorize("hasRole('TRANSPORTEUR')")
+    @Operation(summary = "Transporteur: Update status of MY assigned colis")
+    public ResponseEntity<ColisResponse> updateColisStatus(
+            @PathVariable String id,
+            @RequestParam ColisStatus newStatus,
+            Authentication authentication) {
+        String currentUserId = authentication.getName();
+        return ResponseEntity.ok(colisService.updateStatus(id, newStatus, currentUserId));
+    }
 }
