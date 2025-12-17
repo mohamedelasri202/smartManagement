@@ -24,21 +24,21 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Admin - User Management", description = "Manage carriers and users")
 public class AdminUserController {
 
-//    private final UserService userService;
-//
-//
-//
-//    @GetMapping("/users")
-//    @Operation(summary = "List all users (Admin & Transporteurs)")
-//    public ResponseEntity<Page<UserResponse>> getAllUsers(Pageable pageable) {
-//        return ResponseEntity.ok(userService.getAllUsers(pageable));
-//    }
-//
-//    @PatchMapping("/users/{id}/reactivate")
-//    @Operation(summary = "Reactivate a disabled user account")
-//    public ResponseEntity<String> reactivateUser(@PathVariable String id) {
-//        userService.reactivateUser(id);
-//        return ResponseEntity.ok("the transporteur has been reactivated");
+    private final UserService userService;
+
+
+
+    @GetMapping("/users")
+    @Operation(summary = "List all users (Admin & Transporteurs)")
+    public ResponseEntity<Page<UserResponse>> getAllUsers(Pageable pageable) {
+        return ResponseEntity.ok(userService.getAllUsers(pageable));
+    }
+
+    @PatchMapping("/users/{id}/reactivate")
+    @Operation(summary = "Reactivate a disabled user account")
+    public ResponseEntity<String> reactivateUser(@PathVariable String id) {
+        userService.reactivateUser(id);
+        return ResponseEntity.ok("the transporteur has been reactivated");
     }
 
 
